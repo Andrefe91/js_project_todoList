@@ -6,6 +6,54 @@
     <title>Document</title>
 </head>
 <body>
-    <div>Hello my friend</div>
+    <div class="container">
+        <div class="left panel">
+            <header>
+                <div class="user flex-centerVer space-between">
+                    <div class="avatar">
+                        <!-- Delete for logo -->
+                        <p>Logo</p>
+                        <img src="img/avatar.png" alt="">
+                        <p>User</p>
+                    </div>
+
+                    <button id="user_name">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>pencil-plus</title><path d="M20.7,7C21.1,6.6 21.1,6 20.7,5.6L18.4,3.3C18,2.9 17.4,2.9 17,3.3L15.2,5.1L19,8.9M3,17.2V21H6.8L17.8,9.9L14.1,6.1L3,17.2M7,2V5H10V7H7V10H5V7H2V5H5V2H7Z" /></svg>
+                        <p>Edit</p>
+                    </button>
+                </div>
+            </header>
+
+            <div class="divider"></div> <!-- Decoration -->
+
+            <section>
+                <div class="projects">
+                    <div class="title action flex-centerVer space-between">
+                        <h1>My Projects</h1>
+                        <button id="add_project">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>playlist-plus</title><path d="M3 16H10V14H3M18 14V10H16V14H12V16H16V20H18V16H22V14M14 6H3V8H14M14 10H3V12H14V10Z" /></svg>
+                            <p>Add</p>
+                        </button>
+                    </div>
+
+                    <div class="projects_container flexCol">
+                        <button class="project">
+                            <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-right-thick</title><path d="M4,10V14H13L9.5,17.5L11.92,19.92L19.84,12L11.92,4.08L9.5,6.5L13,10H4Z" /></svg>
+                            Project 1
+                        </button>
+
+                        <button class="project">
+                            <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-right-thick</title><path d="M4,10V14H13L9.5,17.5L11.92,19.92L19.84,12L11.92,4.08L9.5,6.5L13,10H4Z" /></svg>
+                            Project 2
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="right panel">
+
+        </div>
+    </div>
 </body>
 </html>
