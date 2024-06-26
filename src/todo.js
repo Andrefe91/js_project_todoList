@@ -1,7 +1,9 @@
+import { format } from 'date-fns';
+
 export default class Todo {
     constructor(title, date, importance = 0, description = '') {
         this._title = title;
-        this._date = date;
+        this._date = format(date, "MM/dd/yyyy");
         this._importance = importance;
         this._description = description;
         this.state = 0;

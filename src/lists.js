@@ -3,26 +3,27 @@ class List {
         this._items = [];
     }
 
-    add(item) {
-        this._items.push(item);
+    addTodo(...items) {
+        for (let item of items) {
+            this._items.push(item);
+        }
     }
 
-    remove(item) {
-        // Todo
-        // this._items.splice(this._items.indexOf(item), 1);
+    removeTodo(item) {
+        this._items.splice(this._items.indexOf(item), 1);
     }
 
-    length() {
+    totalTodos() {
         return this._items.length;
     }
 
-    getList() {
+    getTodos() {
         return this._items;
     }
 }
 
 
-class Project extends List {
+export default class Project extends List {
     constructor(title) {
         super();
         this._title = title;
@@ -38,5 +39,3 @@ class Project extends List {
         this._title = newTitle;
     }
 }
-
-export {List, Project};

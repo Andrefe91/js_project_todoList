@@ -21,14 +21,23 @@ export default class User {
     }
 
     deleteProject(projectID) {
-        
+        delete this.projects[projectID];
     }
 
     getProjects() {
-        return this.projects;
+        let array = [];
+
+        for (let project in this.projects) {
+            array.push(this.projects[project]);
+        }
+        return array;
     }
 
     getProjectByName(name) {
-        return this.projects[name];
+        for (let project in this.projects) {
+            if (this.projects[project].title === name) {
+                return this.projects[project];
+            }
+        }
     }
 }
