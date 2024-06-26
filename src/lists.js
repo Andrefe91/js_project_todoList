@@ -1,4 +1,4 @@
-export default class List {
+class List {
     constructor () {
         this._items = [];
     }
@@ -20,3 +20,23 @@ export default class List {
         return this._items;
     }
 }
+
+
+class Project extends List {
+    constructor(title) {
+        super();
+        this._title = title;
+    }
+
+    // Getters
+    get title() {
+        return this._title;
+    }
+
+    // Setters
+    set title(newTitle) {
+        this._title = newTitle;
+    }
+}
+
+export {List, Project};
