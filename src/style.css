@@ -12,7 +12,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio,a, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -27,6 +27,7 @@ time, mark, audio, video {
     --main-color-complement: white;
     --main-color-complement-darker: #AD88C6;
     --main-color-accent: #7469B6;
+    --main-color-footer: #c1b9f1;
 
 
     --main-container-margin: 20px;
@@ -49,6 +50,15 @@ button {
 button svg {
     height: 1.5em;
     margin-right: 0.2em;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: overline underline;
+    }
 }
 
 
@@ -97,6 +107,7 @@ button svg {
     min-width: 12em;
     max-width: 15em;
 
+    border-right: 1px solid var(--main-color-complement-darker);
     box-sizing: border-box;
     padding: 0.5em 1em 0.5em 1em;
 }
@@ -108,12 +119,15 @@ button svg {
 }
 
 .user {
-    /* outline: 1px solid red; */
     height: 2em;
 }
 
 .avatar {
     display: flex;
+}
+
+section {
+    flex: auto;
 }
 
 .projects_container {
@@ -122,20 +136,45 @@ button svg {
 }
 
 .project {
-    align-items: center;
-    /* background-color: #FFFFFF; */
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0;
+    border: none;
+    outline: none;
+    font: inherit;
+    color: inherit;
+    background: none;
     border-radius: .25rem;
-    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
     box-sizing: border-box;
-    color: rgba(0, 0, 0, 0.85);
     cursor: pointer;
-    /* font-weight: 600; */
-    min-height: 3rem;
-    text-decoration: none;
-    transition: all 250ms;
+    height: 2em;
+    margin-bottom: 0.5em;
+
+    transition: all 200ms;
     user-select: none;
     touch-action: manipulation;
+
+    &:active {
+        background-color: aqua;
+    }
+
+    &:hover {
+        background-color: var(--main-color-complement-darker);
+        outline: 1px solid var(--main-color-accent);
+    }
+}
+
+.project svg {
+    height: 1em;
+}
+
+footer {
+    background-color: var(--main-color-footer);
+    height: 3em;
+    margin: -0.5em -1em -0.5em -1em;
+    padding: 0.5em;
+    font-size: 1em;
+
+    text-align: center;
+    border-radius: 0 0 0 var(--main-container-border-radius);
 }
 
 /* Media Queries */
