@@ -21,6 +21,10 @@ time, mark, audio,a, video {
 	vertical-align: baseline;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+IT+Moderna:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+
+
 /* Global Scale */
 :root {
     --main-color: rgb(246, 241, 247);
@@ -37,7 +41,8 @@ time, mark, audio,a, video {
 body {
     width: 100vw;
     height: 100vh;
-    font-size: 20px;
+    font-size: 18px;
+    font-family: "Mukta", sans-serif;
     display: flex;
     flex-direction: column;
 }
@@ -49,7 +54,7 @@ button {
 
 button svg {
     height: 1.5em;
-    margin-right: 0.2em;
+    margin-right: 0.35em;
 }
 
 a {
@@ -114,8 +119,9 @@ a {
 
 .right {
     background-color: var(--main-color-complement);
-
     border-radius: 0 var(--main-container-border-radius) var(--main-container-border-radius) 0;
+
+    padding: 2em;
 }
 
 .user {
@@ -177,6 +183,29 @@ footer {
     border-radius: 0 0 0 var(--main-container-border-radius);
 }
 
+.project_title p {
+    font-family: "Playwrite IT Moderna", sans-serif;
+    font-size: 1.5em;
+}
+
+#date {
+    font-size: 1em;
+}
+
+.to-dos .list {
+    margin-top: 1em;
+}
+
+.to-dos {
+    padding: 1em 0 1em 0;
+}
+
+.to-do {
+    border: 1px solid red;
+    border-radius: 0.5em;
+    background-color: #c1b9f1;
+}
+
 /* Media Queries */
 
 @media (width < 1250px) { /* Laptop Size */
@@ -189,7 +218,7 @@ footer {
 @media (width < 720px) { /* Tablet Size */
 
     body {
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .container {
@@ -199,14 +228,34 @@ footer {
     .left {
         max-width: 10em;
     }
+
+    .right {
+        padding: 1em;
+    }
+
+    footer {
+        line-height: 1em;
+    }
 }
 
 @media (width < 360px) { /* Phone Size */
     body {
-        font-size: 15px;
+        font-size: 10px;
     }
 
     .container {
         margin: 10px 10px 10px 10px;
+    }
+
+    #user_name p {
+        display: none;
+    }
+
+    #add_project p {
+        display: none;
+    }
+
+    #date {
+        display: none;
     }
 }
