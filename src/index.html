@@ -80,17 +80,16 @@
             </section>
         </div>
     </div>
-    <dialog id="userForm">
-        <p>User Form:</p>
+    <dialog id="userDialog">
+        <p>Edit User</p>
 
-        <form>
+        <form id="userForm">
             <label for="userName">User Name:</label>
             <input type="text" name="userName" id="userName">
 
-            <button autofocus id="closeUserForm" formmethod="dialog" value="close" formnovalidate>Close</button>
-            <button id="acceptUserForm" value="accept" type="submit" formmethod="post">Accept</button>
+            <button autofocus id="closeUserDialog" value="close" type="button">Close</button>
+            <button id="acceptUserForm" value="accept" type="submit" formmethod="dialog" >Accept</button>
         </form>
-
     </dialog>
 
 </body>

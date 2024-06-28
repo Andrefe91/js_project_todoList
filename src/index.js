@@ -3,6 +3,8 @@ import { format } from 'date-fns';
 import Todo from './todo.js';
 import Project from './lists.js';
 import User from './user.js';
+import {addEventsToDialog} from './formHandler.js'
+
 
 if (process.env.NODE_ENV !== 'production') {
     console.log("We appear to be running in a development environment");
@@ -45,50 +47,35 @@ let date = document.getElementById('date');
 
     //Dialog User Form
 const editUserButton = document.getElementById('editUserButton');
-const closeUserForm = document.querySelector('#closeUserForm');
-const acceptUserForm = document.querySelector('#acceptUserForm');
+const closeUserDialog = document.querySelector('#closeUserDialog');
 const userForm = document.querySelector('#userForm');
-
+const userName = document.querySelector('#userName');
 
 // Assignements to variables
 date.innerHTML = format(Date(), "EEEE - MMMM d, yyyy"); // Part of the UI
 
 
 // Assign Click Event Listeners
+    //Dialog User Form
 editUserButton.addEventListener('click', () => {
-    userForm.showModal();
+    userDialog.showModal();
 });
 
-closeUserForm.addEventListener('click', (event) => {
+closeUserDialog.addEventListener('click', () => {
+    userDialog.close();
+});
+
+
+// Form Submit Listeners
+    //Dialog User Form
+userForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    userForm.close();
+    userDialog.close();
 });
 
-userForm.addEventListener("close", (event) => {
-    console.log(userForm.returnValue)
-});
 
-acceptUserForm.addEventListener("click", (event) => {
-    event.preventDefault();
-    userForm.close(
-        console.log(userForm.returnValue)
-    );
-});
-
-// Functions
-
-
-function openDialog(dialogId) {
-    document.getElementById(dialogId).showModal();
-};
-
-function closeDialog(dialogId, event) {
-    event.preventDefault();
-    document.getElementById(dialogId).close();
-}
-
-
-
+// Function Calls
+addEventsToDialog("userDialog", "editUserButton", "closeUserDialog", "userForm");
 
 
 
