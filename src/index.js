@@ -42,14 +42,59 @@ let user = new User("User");
 
 // Query Selectors
 let date = document.getElementById('date');
-let container = document.querySelector('.container');
+
+    //Dialog User Form
+const editUserButton = document.getElementById('editUserButton');
+const closeUserForm = document.querySelector('#closeUserForm');
+const acceptUserForm = document.querySelector('#acceptUserForm');
+const userForm = document.querySelector('#userForm');
+
 
 // Assignements to variables
 date.innerHTML = format(Date(), "EEEE - MMMM d, yyyy"); // Part of the UI
 
-let test = fetch('/src/test.html');
-const newDiv = document.createElement('div');
 
+// Assign Click Event Listeners
+editUserButton.addEventListener('click', () => {
+    userForm.showModal();
+});
+
+closeUserForm.addEventListener('click', (event) => {
+    event.preventDefault();
+    userForm.close();
+});
+
+userForm.addEventListener("close", (event) => {
+    console.log(userForm.returnValue)
+});
+
+acceptUserForm.addEventListener("click", (event) => {
+    event.preventDefault();
+    userForm.close(
+        console.log(userForm.returnValue)
+    );
+});
+
+// Functions
+
+
+function openDialog(dialogId) {
+    document.getElementById(dialogId).showModal();
+};
+
+function closeDialog(dialogId, event) {
+    event.preventDefault();
+    document.getElementById(dialogId).close();
+}
+
+
+
+
+
+
+
+let container = document.querySelector('.container');
+const newDiv = document.createElement('div');
 fetch('/src/test.html').then(function (response) {
 	if (response.ok) {
 		return response.text();
@@ -59,4 +104,4 @@ fetch('/src/test.html').then(function (response) {
 	newDiv.innerHTML = text;
 });
 
-container.appendChild(newDiv);
+// container.appendChild(newDiv);
