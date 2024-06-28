@@ -30,7 +30,7 @@
                 <div class="projects">
                     <div class="title action flex-centerVer space-between">
                         <h1>My Projects</h1>
-                        <button id="add_project" class="add">
+                        <button id="addProjectButton" class="add">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>playlist-plus</title><path d="M3 16H10V14H3M18 14V10H16V14H12V16H16V20H18V16H22V14M14 6H3V8H14M14 10H3V12H14V10Z" /></svg>
                             <p>Add</p>
                         </button>
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="to-dos">
-                    <button id="add_to-do" class="add">
+                    <button id="addTodoButton" class="add">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus-box-multiple</title><path d="M19,11H15V15H13V11H9V9H13V5H15V9H19M20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M4,6H2V20A2,2 0 0,0 4,22H18V20H4V6Z" /></svg>
                         <p>Add To-Do</p>
                     </button>
@@ -80,6 +80,7 @@
             </section>
         </div>
     </div>
+
     <dialog id="userDialog">
         <p>Edit User</p>
 
@@ -92,8 +93,32 @@
         </form>
     </dialog>
 
+
+    <dialog id="projectDialog">
+        <p>New Project</p>
+
+        <form id="projectForm">
+            <label for="projectName">User Name:</label>
+            <input type="text" name="projectName" id="projectName">
+
+            <button autofocus id="closeProjectDialog" value="close" type="button">Close</button>
+            <button id="acceptProjectForm" value="accept" type="submit" formmethod="dialog" >Accept</button>
+        </form>
+    </dialog>
+
+    <dialog id="todoDialog">
+        <p>New To-do</p>
+
+        <form id="todoForm">
+            <label for="todoName">To-Do:</label>
+            <input type="text" name="todoName" id="todoName">
+
+            <label for="todoDescription">Description</label>
+            <input type="text" name="todoDescription" id="todoDescription">
+
+            <button autofocus id="closeTodoDialog" value="close" type="button">Close</button>
+            <button id="acceptTodoForm" value="accept" type="submit" formmethod="dialog" >Accept</button>
+        </form>
+    </dialog>
 </body>
-
-
-
 </html>

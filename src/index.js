@@ -45,39 +45,19 @@ let user = new User("User");
 // Query Selectors
 let date = document.getElementById('date');
 
-    //Dialog User Form
-const editUserButton = document.getElementById('editUserButton');
-const closeUserDialog = document.querySelector('#closeUserDialog');
-const userForm = document.querySelector('#userForm');
-const userName = document.querySelector('#userName');
 
 // Assignements to variables
 date.innerHTML = format(Date(), "EEEE - MMMM d, yyyy"); // Part of the UI
 
-
 // Assign Click Event Listeners
-    //Dialog User Form
-editUserButton.addEventListener('click', () => {
-    userDialog.showModal();
-});
-
-closeUserDialog.addEventListener('click', () => {
-    userDialog.close();
-});
-
-
-// Form Submit Listeners
-    //Dialog User Form
-userForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    userDialog.close();
-});
 
 
 // Function Calls
-addEventsToDialog("userDialog", "editUserButton", "closeUserDialog", "userForm");
 
-
+    //Manage Dialogs -> This section manage the creation of the events for the dialogs in the page
+addEventsToDialog("userDialog", "editUserButton", "closeUserDialog", "userForm", ["userName"]);
+addEventsToDialog("projectDialog", "addProjectButton", "closeProjectDialog", "projectForm");
+addEventsToDialog("todoDialog", "addTodoButton", "closeTodoDialog", "todoForm", ["todoName", "todoDescription"]);
 
 
 let container = document.querySelector('.container');
