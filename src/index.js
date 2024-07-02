@@ -4,6 +4,7 @@ import Todo from './todo.js';
 import Project from './lists.js';
 import User from './user.js';
 import {addEventsToDialog} from './formHandler.js'
+import loadPartial from './loadPartial.js'
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -53,22 +54,10 @@ date.innerHTML = format(Date(), "EEEE - MMMM d, yyyy"); // Part of the UI
 
 
 // Function Calls
-
     //Manage Dialogs -> This section manage the creation of the events for the dialogs in the page
 addEventsToDialog("userDialog", "editUserButton", "closeUserDialog", "userForm", ["userName"]);
-addEventsToDialog("projectDialog", "addProjectButton", "closeProjectDialog", "projectForm");
+addEventsToDialog("projectDialog", "addProjectButton", "closeProjectDialog", "projectForm", ["projectName"]);
 addEventsToDialog("todoDialog", "addTodoButton", "closeTodoDialog", "todoForm", ["todoName", "todoDescription"]);
 
+loadPartial('projectPartial');
 
-let container = document.querySelector('.container');
-const newDiv = document.createElement('div');
-fetch('/src/test.html').then(function (response) {
-	if (response.ok) {
-		return response.text();
-	}
-	throw response;
-}).then(function (text) {
-	newDiv.innerHTML = text;
-});
-
-// container.appendChild(newDiv);

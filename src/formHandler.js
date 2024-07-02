@@ -1,3 +1,9 @@
+import  controller from './controller';
+
+// The main function, "addEventsToDialog" handle the task of creating the add event listeners
+//for all the actions inside the form dialogs. The "getParamsValues" and "saveParamsToDisk" are
+// utility functions to handle the information and save to disk.
+
 function addEventsToDialog(dialogId, openButtonId, closeButtonId, formId, parameters = []) {
     let params;
 
@@ -24,17 +30,12 @@ function addEventsToDialog(dialogId, openButtonId, closeButtonId, formId, parame
         params = getParamsValues(parameters);
 
         if (parameters.length != 0) {
-            saveParamsToDisk(formId, params);
-            console.log(params);
+            controller(formId, params); //In a MVC, this is sending information to the controller
         }
     });
 }
 
-function saveParamsToDisk(formId, params) {
-    localStorage.setItem(formId, JSON.stringify(params));
-}
-
-function getParamsValues(parameters) {
+function getParamsValues(parameters) { //Allows getting n number of parameters from dialogs
     let params = {};
 
     if (parameters.length == 0)  {
@@ -44,6 +45,7 @@ function getParamsValues(parameters) {
     for (let index in parameters) {
         params[parameters[index]] = document.getElementById(parameters[index]).value;
     }
+
     return params;
 
 }
