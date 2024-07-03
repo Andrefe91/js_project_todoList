@@ -42,8 +42,6 @@ if (true) { //Example
 // Create User and Save it to disk
 let user = new User("User");
 saveToDisk('user', user);
-let userString = loadFromDisk('user');
-console.log(unserializeUser(userString));
 
 // Query Selectors
 let date = document.getElementById('date');

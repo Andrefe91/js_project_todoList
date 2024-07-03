@@ -1,4 +1,4 @@
-import  controller from './controller';
+import  {controller} from './controller';
 
 // The main function, "addEventsToDialog" handle the task of creating the add event listeners
 //for all the actions inside the form dialogs. The "getParamsValues" and "saveParamsToDisk" are
