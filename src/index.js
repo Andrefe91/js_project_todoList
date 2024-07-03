@@ -5,7 +5,8 @@ import Project from './lists.js';
 import User from './user.js';
 import {addEventsToDialog} from './formHandler.js'
 import loadPartial from './loadPartial.js'
-
+import {saveToDisk, loadFromDisk} from './saveAndLoad.js'
+import unserializeUser from './unserialiseUser.js';
 
 if (process.env.NODE_ENV !== 'production') {
     console.log("We appear to be running in a development environment");
@@ -34,14 +35,15 @@ if (true) { //Example
 
     project2.addTodo(officetodo1, officetodo2, officetodo3);
     user.addProject(project2);
-
     // console.log(user.getProjects()[0].getTodos());
-
     // End of example
 }
 
-// Create User
+// Create User and Save it to disk
 let user = new User("User");
+saveToDisk('user', user);
+let userString = loadFromDisk('user');
+console.log(unserializeUser(userString));
 
 // Query Selectors
 let date = document.getElementById('date');
