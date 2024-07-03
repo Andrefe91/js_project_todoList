@@ -1,5 +1,5 @@
 import validate from './validate.js'
-import {saveToDisk, loadFromDisk} from './saveAndLoad.js'
+import {saveToDisk, loadFromDisk, deleteFromDisk} from './saveAndLoad.js'
 import Todo from './todo.js';
 import Project from './lists.js';
 import unserializeUser from './unserialiseUser.js';
@@ -14,18 +14,18 @@ function controller(formId, params) {
 
 
 function updateUserAndDom(formId) {
-    let userString = loadFromDisk('user');
+    let userString = loadFromDisk('user'); // Read from disk
     let user = unserializeUser(userString); // Create the User object
 
     switch (formId) {
         case 'userForm':
-            updateUser(user);
+            updateUserObject(user);
             break;
         case 'projectForm':
-            updateProject(user);
+            updateProjectObject(user);
             break;
         case 'todoForm':
-            updateTodo(user);
+            updateTodoObject(user);
             break;
     }
 
@@ -36,13 +36,7 @@ function updateUserAndDom(formId) {
     deleteFromDisk(formId);
 }
 
-
-function deleteFromDisk(formId) {
-    // Simulates deleting from server
-    localStorage.removeItem(formId);
-}
-
-function updateUser(user) {
+function updateUserObject(user) {
     let object = loadFromDisk('userForm');
     user.name = object['userName'];
 
@@ -51,13 +45,23 @@ function updateUser(user) {
 }
 
 
-function updateProject(user) {
- //Todo: Let every method call the User object unserializer ?
+function updateProjectObject(user) {
+    //Todo: Let every method call the User object unserializer ?
+
+    // Read from disk
+    let projectObject = loadFromDisk('projectForm');
+    let projectName = projectObject['projectName'];
+
+    //Create project object and add to User
+    let project = new Project(projectName);
+    user.addProject(project);
+
+    callChange(`${projectName} project created`);
 }
 
 
-function updateTodo(user) {
-
+function updateTodoObject(user) {
+    
 }
 
 function callChange(callText) {

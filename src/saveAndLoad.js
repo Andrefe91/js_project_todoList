@@ -6,4 +6,11 @@ function loadFromDisk(item) {
     return JSON.parse(localStorage.getItem(item));
 }
 
-export {saveToDisk, loadFromDisk}
+function deleteFromDisk(formId) {
+    // Simulates deleting from server
+    localStorage.removeItem(formId);
+}
+
+export {saveToDisk, loadFromDisk, deleteFromDisk}
+
+
