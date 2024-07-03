@@ -1,5 +1,6 @@
 import validate from './validate.js'
 import {saveToDisk, loadFromDisk, deleteFromDisk} from './saveAndLoad.js'
+import loadPartial from './loadPartial.js';
 import Todo from './todo.js';
 import Project from './lists.js';
 import unserializeUser from './unserialiseUser.js';
@@ -17,37 +18,52 @@ function updateUserAndDom(formId) {
     let userString = loadFromDisk('user'); // Read from disk
     let user = unserializeUser(userString); // Create the User object
 
-    switch (formId) {
-        case 'userForm':
-            updateUserObject(user);
-            break;
-        case 'projectForm':
-            updateProjectObject(user);
-            break;
-        case 'todoForm':
-            updateTodoObject(user);
-            break;
-    }
-
+    // Update the User object
+    updateUserObject(formId, user);
+    updateUserDom(formId, user);
     // Update the user json in local storage
     saveToDisk("user", user);
 
-    // Delete from the local storage
+    // Delete from the local storage the form information to avoid repetition
     deleteFromDisk(formId);
 }
 
-function updateUserObject(user) {
-    let object = loadFromDisk('userForm');
-    user.name = object['userName'];
-
-    document.getElementById('userNameText').innerHTML = user.name;
-    callChange("Updated User Name");
+function updateUserObject(formId, user) {
+    switch (formId) {
+        case "userForm":
+            editInfoInUser(user);
+            break;
+        case "projectForm":
+            addProjectInUser(user);
+            break;
+        case "todoForm":
+            addTodoInUser(user);
+            break;
+    }
 }
 
+function updateUserDom(formId, user){
+    switch (formId) {
+        case "userForm":
+            updateUserInfoInDom(user);
+            break;
+        case "projectForm":
+            updateProjectInfoInDom(user);
+            break;
+        case "todoForm":
+            updateTodoInfoInDom(user);
+            break;
+    }
+}
 
-function updateProjectObject(user) {
-    //Todo: Let every method call the User object unserializer ?
+// User Object Manipulation
 
+function editInfoInUser(user) {
+    let object = loadFromDisk('userForm');
+    user.name = object['userName'];
+}
+
+function addProjectInUser(user) {
     // Read from disk
     let projectObject = loadFromDisk('projectForm');
     let projectName = projectObject['projectName'];
@@ -56,16 +72,56 @@ function updateProjectObject(user) {
     let project = new Project(projectName);
     user.addProject(project);
 
-    callChange(`${projectName} project created`);
+    console.log(`${projectName} project created`);
+}
+
+function addTodoInUser(user) {
+
 }
 
 
-function updateTodoObject(user) {
-    
+//Dom Manipulation
+
+function updateUserInfoInDom(user) {
+    document.getElementById('userNameText').innerHTML = user.name;
+    callChange("Updated User Name");
 }
+
+function updateProjectInfoInDom(user) {
+    let projectContainer = document.querySelector('.projects_container');
+    clearDiv(projectContainer);
+
+    for (let projectKey in user.projects) {
+        let projectDiv = loadPartial('projectPartial');
+
+        let project = user.projects[projectKey];
+        let projectNameText = projectDiv.getElementById("projectNameText");
+
+        console.log(projectNameText);
+        projectContainer.appendChild(projectDiv);
+    }
+
+
+
+
+
+    callChange("Updated Project's Information");
+}
+
+function updateTodoInfoInDom(user) {
+
+    callChange("Updated To-do's Information");
+}
+
+
 
 function callChange(callText) {
     console.log(callText);
 }
 
+function clearDiv(div) {
+    div.textContent = '';
+}
+
 export { controller, callChange}
+

@@ -7,6 +7,6 @@ export default function loadPartial(partialName) {
         throw response;
     }).then(function (text) {
         newDiv.innerHTML = text;
-        return newDiv;
     });
+    return newDiv;
 }

@@ -25,7 +25,6 @@ function addEventsToDialog(dialogId, openButtonId, closeButtonId, formId, parame
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         dialog.close();
-        console.log(`Form id: ${formId}`);
 
         params = getParamsValues(parameters);
 
