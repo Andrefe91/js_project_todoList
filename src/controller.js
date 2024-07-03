@@ -52,7 +52,7 @@ function updateUser(user) {
 
 
 function updateProject(user) {
-
+ //Todo: Let every method call the User object unserializer ?
 }
 
 
