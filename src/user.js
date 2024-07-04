@@ -40,4 +40,8 @@ export default class User {
             }
         }
     }
+
+    getProjectById(id) {
+        return this.projects[id];
+    }
 }

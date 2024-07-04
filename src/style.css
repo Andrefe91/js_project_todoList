@@ -175,7 +175,7 @@ section {
 
     &:hover {
         background-color: var(--main-color-complement-darker);
-        outline: 1px solid var(--main-color-accent);
+        outline: 2px solid var(--main-color-accent);
     }
 }
 

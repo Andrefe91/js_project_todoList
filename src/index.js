@@ -40,7 +40,7 @@ if (false) { //Example
 }
 
 // Create User and Save it to disk, serves as a User reset for testing
-// let user = new User("User");
+let user = new User("User");
 // saveToDisk('user', user);
 
 // Load or create a user for the Application
@@ -59,7 +59,7 @@ date.innerHTML = format(Date(), "EEEE - MMMM d, yyyy"); // Part of the UI
     //Manage Dialogs -> This section manage the creation of the events for the dialogs in the page
 addEventsToDialog("userDialog", "editUserButton", "closeUserDialog", "userForm", ["userName"]);
 addEventsToDialog("projectDialog", "addProjectButton", "closeProjectDialog", "projectForm", ["projectName"]);
-addEventsToDialog("todoDialog", "addTodoButton", "closeTodoDialog", "todoForm", ["todoName", "todoDescription"]);
+addEventsToDialog("todoDialog", "addTodoButton", "closeTodoDialog", "todoForm", ["projectId", "todoTitle", "todoDueDate", "todoImportance", "todoDescription"]);
 
 
 

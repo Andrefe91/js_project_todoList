@@ -1,9 +1,9 @@
-import { format } from 'date-fns';
+import { format, addDays } from 'date-fns';
 
 export default class Todo {
     constructor(title, date, importance = 0, description = '') {
         this._title = title;
-        this._date = format(date, "MM/dd/yyyy");
+        this._date = format(addDays(new Date(date),1), "yyyy-MM-dd"); //No idea, the format function was substracting a day
         this._importance = importance;
         this._description = description;
         this.state = 0;
