@@ -87,33 +87,36 @@ function updateUserInfoInDom(user) {
     callChange("Updated User Name");
 }
 
-function updateProjectInfoInDom(user) {
+async function updateProjectInfoInDom(user) {
     let projectContainer = document.querySelector('.projects_container');
     clearDiv(projectContainer);
 
+    // Load the partial
+    const blueprintDiv = await loadPartial('projectPartial');
 
     for (let projectKey in user.projects) {
+        try {
+            // Create a new div to hold the project partial and its content
+            const projectDiv = document.createElement('div');
+            projectDiv.innerHTML = blueprintDiv.innerHTML
 
-        // This is required as fetching HTML content from an external source (like a file)
-        // is inherently an asynchronous operation. This mean the content is not inmediately available
-        // when the fetch call is made, and we need to wait for the content to be fetched and processed before
-        // we can perform any operation on it.
-        loadPartial('projectPartial').then(projectDiv => {
-            console.log(user.projects[projectKey].title);
+            // Get the project information from the user and assign to the HTML element
             let projectNameText = projectDiv.querySelector("#projectNameText");
-            projectNameText.textContent = user.projects[projectKey].title
+            projectNameText.textContent = user.projects[projectKey].title // Append the title of the project
 
-            projectContainer.appendChild(projectDiv);
-        }).catch(error => {
-            console.error('Error loading the partial: ', error);
-        });
+            let buttonProject = projectDiv.querySelector("button");
+            buttonProject.setAttribute("projectId", projectKey); //Append the projectId to crossreference
+
+            // Append only what's inside the <div> container of the partial
+            projectContainer.appendChild(projectDiv.firstChild);
+        } catch (error) {
+            console.error('Error during load and process: ', error);
+        }
     }
-
     callChange("Updated Project's Information");
 }
 
 function updateTodoInfoInDom(user) {
-
     callChange("Updated To-do's Information");
 }
 

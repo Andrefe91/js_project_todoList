@@ -59,3 +59,5 @@ addEventsToDialog("userDialog", "editUserButton", "closeUserDialog", "userForm",
 addEventsToDialog("projectDialog", "addProjectButton", "closeProjectDialog", "projectForm", ["projectName"]);
 addEventsToDialog("todoDialog", "addTodoButton", "closeTodoDialog", "todoForm", ["todoName", "todoDescription"]);
 
+
+
