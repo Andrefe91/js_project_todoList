@@ -107,6 +107,9 @@ async function updateProjectInfoInDom(user) {
             let buttonProject = projectDiv.querySelector("button");
             buttonProject.setAttribute("projectId", projectKey); //Append the projectId to crossreference
 
+            // Add event listener to the button
+            buttonProject.addEventListener('click', selectProyect);
+
             // Append only what's inside the <div> container of the partial
             projectContainer.appendChild(projectDiv.firstChild);
         } catch (error) {
@@ -130,5 +133,23 @@ function clearDiv(div) {
     div.textContent = '';
 }
 
-export { controller, callChange}
+// Event handlers
+
+function selectProyect(event) {
+    if (event.target.classList[0] == "project") { //So only the button and not the childs are selected
+        removeSelectedProyect(); //To deselect any active proyecto from the list
+        let selectedProyect = event.target;
+        selectedProyect.classList.add('selected');
+    }
+}
+
+function removeSelectedProyect() {
+    let selectedProject = document.querySelector(".project.selected");
+
+    if (selectedProject) {
+        selectedProject.classList.remove('selected');
+    }
+}
+
+export { controller, updateUserInfoInDom, updateProjectInfoInDom, updateTodoInfoInDom, callChange}
 

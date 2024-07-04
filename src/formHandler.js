@@ -1,7 +1,7 @@
 import  {controller} from './controller';
 
 // The main function, "addEventsToDialog" handle the task of creating the add event listeners
-//for all the actions inside the form dialogs. The "getParamsValues" and "saveParamsToDisk" are
+//for all the actions inside the form dialogs. The "getParamsValues" and is a
 // utility functions to handle the information and save to disk.
 
 function addEventsToDialog(dialogId, openButtonId, closeButtonId, formId, parameters = []) {

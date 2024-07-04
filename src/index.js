@@ -4,16 +4,16 @@ import Todo from './todo.js';
 import Project from './lists.js';
 import User from './user.js';
 import {addEventsToDialog} from './formHandler.js'
-import loadPartial from './loadPartial.js'
 import {saveToDisk, loadFromDisk} from './saveAndLoad.js'
 import unserializeUser from './unserialiseUser.js';
+import loadOrCreateUser from './loadOrCreateUser.js';
 
 if (process.env.NODE_ENV !== 'production') {
     console.log("We appear to be running in a development environment");
 }
 
 
-if (true) { //Example
+if (false) { //Example
     // Example of use
     let user = new User("Jeff");
 
@@ -39,13 +39,15 @@ if (true) { //Example
     // End of example
 }
 
-// Create User and Save it to disk
-let user = new User("User");
-saveToDisk('user', user);
+// Create User and Save it to disk, serves as a User reset for testing
+// let user = new User("User");
+// saveToDisk('user', user);
+
+// Load or create a user for the Application
+loadOrCreateUser();
 
 // Query Selectors
 let date = document.getElementById('date');
-
 
 // Assignements to variables
 date.innerHTML = format(Date(), "EEEE - MMMM d, yyyy"); // Part of the UI

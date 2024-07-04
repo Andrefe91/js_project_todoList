@@ -132,8 +132,15 @@ dialog::backdrop {
     height: 2em;
 }
 
+.avatar svg {
+    height: 2em;
+    margin-right: 0.3em;
+}
+
 .avatar {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 section {
@@ -172,8 +179,17 @@ section {
     }
 }
 
+.selected {
+    /* background-color: var(--main-color-complement-darker); */
+    outline: 2px solid var(--main-color-accent);
+}
+
 .project svg {
     height: 1em;
+}
+
+.project svg, .project p {
+    pointer-events: none;
 }
 
 footer {
