@@ -91,19 +91,23 @@ function updateProjectInfoInDom(user) {
     let projectContainer = document.querySelector('.projects_container');
     clearDiv(projectContainer);
 
+
     for (let projectKey in user.projects) {
-        let projectDiv = loadPartial('projectPartial');
 
-        let project = user.projects[projectKey];
-        let projectNameText = projectDiv.getElementById("projectNameText");
+        // This is required as fetching HTML content from an external source (like a file)
+        // is inherently an asynchronous operation. This mean the content is not inmediately available
+        // when the fetch call is made, and we need to wait for the content to be fetched and processed before
+        // we can perform any operation on it.
+        loadPartial('projectPartial').then(projectDiv => {
+            console.log(user.projects[projectKey].title);
+            let projectNameText = projectDiv.querySelector("#projectNameText");
+            projectNameText.textContent = user.projects[projectKey].title
 
-        console.log(projectNameText);
-        projectContainer.appendChild(projectDiv);
+            projectContainer.appendChild(projectDiv);
+        }).catch(error => {
+            console.error('Error loading the partial: ', error);
+        });
     }
-
-
-
-
 
     callChange("Updated Project's Information");
 }
