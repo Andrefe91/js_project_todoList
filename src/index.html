@@ -101,10 +101,22 @@
         <p>New To-do</p>
 
         <form id="todoForm">
-            <label for="todoName">To-Do:</label>
-            <input type="text" name="todoName" id="todoName">
+            <input type="hidden" name="projectId" id="projectId" value="">
 
-            <label for="todoDescription">Description</label>
+            <label for="todoTitle">Title:</label>
+            <input type="text" name="todoTitle" id="todoTitle">
+
+            <label for="todoDueDate">Due Date:</label>
+            <input type="date" name="todoDueDate" id="todoDueDate">
+
+            <label for="todoImportance">Priority:</label>
+            <select name="todoImportance" id="todoImportance">
+                <option value="High">High</option>
+                <option value="Medium" selected="selected">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+
+            <label for="todoDescription">Description: </label>
             <input type="text" name="todoDescription" id="todoDescription">
 
             <button autofocus id="closeTodoDialog" value="close" type="button">Close</button>
