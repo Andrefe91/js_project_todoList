@@ -54,7 +54,7 @@ async function updateUserDom(formId, user){
             document.querySelector(".projects_container").lastElementChild.classList.add("selected");
             break;
         case "todoForm":
-
+            updateTodoField();
             break;
     }
 }
@@ -86,11 +86,11 @@ function addTodoInUser(user) {
     let projectId = todoObject['projectId'];
     let todoTitle = todoObject['todoTitle'];
     let todoDueDate = todoObject['todoDueDate'];
-    let todoPriority = todoObject['todoPriority'];
+    let todoImportance = todoObject['todoImportance'];
     let todoDescription = todoObject['todoDescription'];
 
     // Create todo object and add to User
-    let todo = new Todo(todoTitle, new Date(todoDueDate), todoPriority, todoDescription);
+    let todo = new Todo(todoTitle, new Date(todoDueDate), todoImportance, todoDescription);
 
     // Find the project by its id
     let project = user.getProjectById(projectId);
@@ -149,7 +149,6 @@ async function updateProjectInfoInDom(user) {
 }
 
 function updateTodoField() {
-    console.log("Started the Update of the TODO field");
     let userString = loadFromDisk('user'); // Read from disk
     let user = unserializeUser(userString); // Create the User object
 
@@ -215,7 +214,6 @@ async function updateTodoList() {
             console.error('Error during load and process: ', error);
         }
     }
-    console.log("End of the Update of the TODO field");
 }
 
 
