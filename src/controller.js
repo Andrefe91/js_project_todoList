@@ -149,6 +149,7 @@ async function updateProjectInfoInDom(user) {
 }
 
 function updateTodoField() {
+    console.log("Started the Update of the TODO field");
     let userString = loadFromDisk('user'); // Read from disk
     let user = unserializeUser(userString); // Create the User object
 
@@ -199,9 +200,11 @@ async function updateTodoList() {
                 todoDescription : todo.description
             }
 
-            console.log(todoInformation);
-
-            // [TODO] For cicle to assign each property to the HTML elements
+            // Assign each property to the HTML elements
+            for (let property in todoInformation) {
+                let todoElement = todoDiv.querySelector(`#${property}`);
+                todoElement.textContent = todoInformation[property]; // Append the value of the property to the HTML element
+            }
 
             // Append only what's inside the <div> container of the partial
             todoListDiv.appendChild(todoDiv.firstChild);
@@ -212,6 +215,7 @@ async function updateTodoList() {
             console.error('Error during load and process: ', error);
         }
     }
+    console.log("End of the Update of the TODO field");
 }
 
 
@@ -236,7 +240,6 @@ function selectProyect(event) {
     let formProjectId = document.getElementsByName("projectId")[0];
 
     formProjectId.setAttribute("value", projectIdValue);
-
     updateTodoField();
 }
 

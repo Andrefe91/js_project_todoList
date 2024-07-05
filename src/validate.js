@@ -7,11 +7,11 @@ export default function validate(formId, params) {
         "projectForm" : ["projectName"],
         "todoForm" : ["todoTitle","todoDueDate", "todoImportance"]
     };
-
     let keysRequired = required[formId];
     let keysParams = Object.keys(params);
 
     for (let index in keysRequired) {
+        console.log(` Index ${index} and Key ${keysRequired[index]}`);
         if (!keysParams.includes(keysRequired[index]) || params[keysRequired[index]].length == 0) {
             callChange(`${keysRequired[index]} cant be empty`);
             return false;

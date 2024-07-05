@@ -41,10 +41,12 @@ function getParamsValues(parameters) { //Allows getting n number of parameters f
         return;
     }
 
+
     for (let index in parameters) {
+        console.log(document.getElementById(parameters[index]).value);
         params[parameters[index]] = document.getElementById(parameters[index]).value;
     }
-
+    console.log(params);
     return params;
 
 }

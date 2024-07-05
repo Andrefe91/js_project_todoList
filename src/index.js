@@ -57,6 +57,7 @@ date.innerHTML = format(Date(), "EEEE - MMMM d, yyyy"); // Part of the UI
 
 // Function Calls
     //Manage Dialogs -> This section manage the creation of the events for the dialogs in the page
+
 addEventsToDialog("userDialog", "editUserButton", "closeUserDialog", "userForm", ["userName"]);
 addEventsToDialog("projectDialog", "addProjectButton", "closeProjectDialog", "projectForm", ["projectName"]);
 addEventsToDialog("todoDialog", "addTodoButton", "closeTodoDialog", "todoForm", ["projectId", "todoTitle", "todoDueDate", "todoImportance", "todoDescription"]);

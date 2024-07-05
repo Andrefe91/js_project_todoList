@@ -20,10 +20,9 @@ export default async function loadOrCreateUser() {
 
         // Update the todoForm with the first selected project Id
         let formProjectId = document.getElementsByName("projectId")[0];
-        let projectIdValue = document.querySelector(".projects_container").firstChild.getAttribute("projectid")
+        let projectIdValue = document.querySelector(".projects_container").firstChild.getAttribute("projectId")
         formProjectId.setAttribute("value", projectIdValue);
 
-        updateTodoField();
     } else {
         let user = new User("User");
         let project = new Project("Example");
@@ -34,4 +33,6 @@ export default async function loadOrCreateUser() {
         document.querySelector(".projects_container").firstChild.classList.add("selected");
         saveToDisk('user', user);
     }
+
+    updateTodoField();
 }
