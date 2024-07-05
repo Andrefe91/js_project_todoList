@@ -52,6 +52,7 @@ async function updateUserDom(formId, user){
 
             // Select the recently created project
             document.querySelector(".projects_container").lastElementChild.classList.add("selected");
+            updateTodoField();
             break;
         case "todoForm":
             updateTodoField();
@@ -161,7 +162,7 @@ function updateTodoField() {
     //Assign Project Title from Project Object Information
     projectTitle.innerHTML = project.title;
 
-    updateTodoList(); // Delete after
+    updateTodoList();
 }
 
 async function updateTodoList() {
@@ -198,25 +199,18 @@ async function updateTodoList() {
                 todoImportance : todo.importance,
                 todoDescription : todo.description
             }
-
             // Assign each property to the HTML elements
             for (let property in todoInformation) {
-                let todoElement = todoDiv.querySelector(`#${property}`);
+                let todoElement = todoDiv.querySelector(`#${property}Text`);
                 todoElement.textContent = todoInformation[property]; // Append the value of the property to the HTML element
             }
 
-            // Append only what's inside the <div> container of the partial
-            todoListDiv.appendChild(todoDiv.firstChild);
-
-            // Append only what's inside the <div> container of the partial
-            todoListDiv.appendChild(todoDiv.firstChild);
+            todoListDiv.appendChild(todoDiv);
         } catch (error) {
             console.error('Error during load and process: ', error);
         }
     }
 }
-
-
 
 function callChange(callText) {
     console.log(callText);
@@ -238,7 +232,7 @@ function selectProyect(event) {
     let formProjectId = document.getElementsByName("projectId")[0];
 
     formProjectId.setAttribute("value", projectIdValue);
-    updateTodoField();
+    updateTodoField()
 }
 
 

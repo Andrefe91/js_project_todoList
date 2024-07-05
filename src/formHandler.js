@@ -27,7 +27,7 @@ function addEventsToDialog(dialogId, openButtonId, closeButtonId, formId, parame
         dialog.close();
 
         params = getParamsValues(parameters);
-
+        console.log(params);
         if (parameters.length != 0) {
             controller(formId, params); //In a MVC, this is sending information to the controller
         }
@@ -43,10 +43,8 @@ function getParamsValues(parameters) { //Allows getting n number of parameters f
 
 
     for (let index in parameters) {
-        console.log(document.getElementById(parameters[index]).value);
         params[parameters[index]] = document.getElementById(parameters[index]).value;
     }
-    console.log(params);
     return params;
 
 }
