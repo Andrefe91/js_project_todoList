@@ -150,8 +150,7 @@ async function updateProjectInfoInDom(user) {
 }
 
 function updateTodoField() {
-    let userString = loadFromDisk('user'); // Read from disk
-    let user = unserializeUser(userString); // Create the User object
+    let user = returnUser(); // Create the User object
 
     let selectedProjectId = document.querySelector(".project.selected").getAttribute("projectid"); // Get the project Id
     let project = user.getProjectById(selectedProjectId); // Get the project from the User object
@@ -166,8 +165,7 @@ function updateTodoField() {
 }
 
 async function updateTodoList() {
-    let userString = loadFromDisk('user'); // Read from disk
-    let user = unserializeUser(userString); // Create the User object
+    let user = returnUser(); // Create the User object
 
     let selectedProjectId = document.querySelector(".project.selected").getAttribute("projectid"); // Get the project Id
     let project = user.getProjectById(selectedProjectId); // Get the project from the User object
@@ -186,18 +184,18 @@ async function updateTodoList() {
 
     for (let todoKey in todoList) {
         try {
+
             // Create a new div to hold the todo partial and its content
             const todoDiv = document.createElement('div');
             todoDiv.innerHTML = blueprintDiv.innerHTML
 
             // Get the todo information from the Proyect Object and assign to the HTML element
             let todo = todoList[todoKey]
-
             let todoInformation = {
                 todoTitle : todo.title,
                 todoDueDate : todo.date,
                 todoImportance : todo.importance,
-                todoDescription : todo.description
+                todoDescription : todo.description,
             }
             // Assign each property to the HTML elements
             for (let property in todoInformation) {
@@ -205,12 +203,52 @@ async function updateTodoList() {
                 todoElement.textContent = todoInformation[property]; // Append the value of the property to the HTML element
             }
 
+            // Check if To-Do is done and assign "done" class if so
+            if (todo.state == 1) {
+                todoDiv.firstChild.classList.add("done");
+            }
+
+            //Functionality assignments
+            let todoDoneButton = todoDiv.querySelector('#doneTodoButton')
+            todoDoneButton.setAttribute('todokey', todoKey);
+
+            let deleteTodoButton = todoDiv.querySelector('#deleteTodoButton')
+            deleteTodoButton.setAttribute('todokey', todoKey);
+
+            // Even Listeners
+                //To toggle the "Done" status of a To-Do
+            todoDoneButton.addEventListener('click', (event) => {
+                let selectedTodoKey = event.target.getAttribute('todokey');
+                let selectedProjectId = document.querySelector(".project.selected").getAttribute('projectid');
+
+                toggleDone(selectedTodoKey, selectedProjectId); //Change State of the To-Do on User File
+                document.querySelectorAll(".to-do")[selectedTodoKey].classList.toggle("done"); // Update Class in Dom for project
+            });
+
+            //Secundary assignments
             todoDiv.firstChild.classList.add(`${todoInformation["todoImportance"]}`);
+
+            //End of assignment, appending the Todo Partial to the Dom tree
             todoListDiv.appendChild(todoDiv.firstChild);
         } catch (error) {
             console.error('Error during load and process: ', error);
         }
     }
+}
+
+function returnUser() {
+    let userString = loadFromDisk('user'); // Read from disk
+    let user = unserializeUser(userString); // Create the User object
+    return user;
+}
+
+function toggleDone(todoKey, projectId) {
+    let user = returnUser(); // Create the User object
+    let todo = user.getProjectById(projectId).getTodos()[todoKey]; //Get the todo object
+
+    todo.toggleState();
+    callChange(`Todo: ${todo.title} Status Updated`);
+    saveToDisk("user", user);
 }
 
 function callChange(callText) {

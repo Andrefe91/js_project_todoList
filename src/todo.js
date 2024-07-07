@@ -10,7 +10,7 @@ export default class Todo {
     }
 
     // Methods
-    flip_state() {
+    toggleState() {
         this.state = this.state === 0? 1 : 0;
     }
 

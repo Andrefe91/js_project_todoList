@@ -238,17 +238,36 @@ footer {
 
 .to-do {
     display: flex;
-    border: 1px dashed var(--main-color-accent);
+    outline: 1px solid var(--main-color-accent);
     border-radius: 0.5em;
     background-color: #f7f5ff;
     margin-bottom: 0.5em;
     padding: 0.5em;
-    transition: all 0.12s ease-in;
+    transition: all 0.1s ease;
 
     &:hover {
-        border: 1px solid var(--main-color-accent);
+        outline: 2px solid var(--main-color-accent);
         box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
     }
+}
+
+.to-do.done {
+    background-color: rgba(255, 255, 255, 0.747);
+    outline: 1px dashed gray;
+
+    &:hover {
+        outline: 1px dashed gray;
+        box-shadow: none;
+    }
+}
+
+.to-do.done .importanceColor {
+    background-color: rgb(228, 228, 228);
+
+}
+
+.to-do.done p {
+    color: gray;
 }
 
 .todoResume {
