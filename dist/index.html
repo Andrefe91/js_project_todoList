@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div class="container">
+        <div class="left panel flexCol">
+            <header>
+                <div class="user flex-centerVer space-between">
+                    <div class="avatar">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>account-circle</title><path d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" /></svg>
+                        <p id="userNameText">User</p>
+                    </div>
+
+                    <button id="editUserButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>pencil-plus</title><path d="M20.7,7C21.1,6.6 21.1,6 20.7,5.6L18.4,3.3C18,2.9 17.4,2.9 17,3.3L15.2,5.1L19,8.9M3,17.2V21H6.8L17.8,9.9L14.1,6.1L3,17.2M7,2V5H10V7H7V10H5V7H2V5H5V2H7Z" /></svg>
+                        <p>Edit</p>
+                    </button>
+                </div>
+            </header>
+
+            <div class="divider"></div> <!-- Decoration -->
+
+            <section>
+                <div class="projects">
+                    <div class="title action flex-centerVer space-between">
+                        <h1>My Projects</h1>
+                        <button id="addProjectButton" class="add">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>playlist-plus</title><path d="M3 16H10V14H3M18 14V10H16V14H12V16H16V20H18V16H22V14M14 6H3V8H14M14 10H3V12H14V10Z" /></svg>
+                            <p>Add</p>
+                        </button>
+                    </div>
+
+                    <div class="projects_container flexCol">
+                        <button class="project">
+                            <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-right-thick</title><path d="M4,10V14H13L9.5,17.5L11.92,19.92L19.84,12L11.92,4.08L9.5,6.5L13,10H4Z" /></svg>
+                            <p>Project 1</p>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="flex-centerVer">
+                <p>Made with 💖 for <a href="https://theodinproject.com/">The Odin Project</a>, find it on <a href="https://github.com/Andrefe91/js_project_todoList">Github</a></p>
+            </footer>
+        </div>
+
+        <div class="right panel">
+            <section>
+                <div class="project_title flex-centerVer space-between">
+                    <p id="projectTitle">Project 1</p>
+
+                    <div class="today">
+                        <p id="date">27/06/2024</p>
+                    </div>
+                </div>
+
+                <div class="to-dos">
+                    <div class="flex-centerVer">
+                        <button id="addTodoButton" class="add margin-right-s">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus-box-multiple</title><path d="M19,11H15V15H13V11H9V9H13V5H15V9H19M20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M4,6H2V20A2,2 0 0,0 4,22H18V20H4V6Z" /></svg>
+                            <p>Add To-Do</p>
+                        </button>
+
+                        <button class="add" id="deleteProjectButton">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete</title><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg>
+                            <p>Delete Project</p>
+                        </button>
+                    </div>
+
+                    <div class="list" id="todoList">
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <dialog id="userDialog">
+        <div class="dialogContainer">
+            <p id="dialogTitle" class="underline">Edit User</p>
+
+            <form id="userForm" >
+                <label for="userName">User Name:</label>
+                <input type="text" name="userName" id="userName">
+
+                <div class="formButtons">
+                    <button id="acceptUserForm" value="accept" type="submit" formmethod="dialog" >Accept</button>
+                    <button autofocus id="closeUserDialog" value="close" type="button">Close</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+
+    <dialog id="projectDialog">
+        <div class="dialogContainer">
+            <p id="dialogTitle" class="underline">New Project</p>
+
+            <form id="projectForm">
+                <label for="projectName">Project Name:</label>
+                <input type="text" name="projectName" id="projectName">
+
+                <div class="formButtons">
+                    <button id="acceptProjectForm" value="accept" type="submit" formmethod="dialog" >Accept</button>
+                    <button autofocus id="closeProjectDialog" value="close" type="button">Close</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="todoDialog">
+        <div class="dialogContainer">
+            <p id="dialogTitle" class="underline">New To-do</p>
+
+            <form id="todoForm">
+                <input type="hidden" name="projectId" id="projectId" value="0">
+
+                <label for="todoTitle">Title:</label>
+                <input type="text" name="todoTitle" id="todoTitle">
+
+                <label for="todoDueDate">Due Date:</label>
+                <input type="date" name="todoDueDate" id="todoDueDate">
+
+                <label for="todoImportance">Priority:</label>
+                <select name="todoImportance" id="todoImportance">
+                    <option value="High">High</option>
+                    <option value="Medium" selected="selected">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+
+                <label for="todoDescription">Description: </label>
+                <textarea name="todoDescription" id="todoDescription"></textarea>
+
+                <div class="formButtons">
+                    <button id="acceptTodoForm" value="accept" type="submit" formmethod="dialog" >Accept</button>
+                    <button autofocus id="closeTodoDialog" value="close" type="button">Close</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="deleteDialog">
+        <div class="dialogContainer">
+            <p id="dialogTitle" class="underline">Delete Confirmation</p>
+
+            <p id="deleteMessage">Are you sure ? This action can be undone...</p>
+
+            <form id="deleteForm">
+                <div class="formButtons">
+                    <button id="acceptDelete" value="accept" type="submit" formmethod="dialog" >Accept</button>
+                    <button autofocus id="closeDeleteDialog" value="close" type="button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="deleteDialogProject">
+        <div class="dialogContainer">
+            <input type="hidden" name="projectId" id="projectDeleteId" value="0">
+
+            <p id="dialogTitle" class="underline">Delete Confirmation</p>
+
+            <p id="deleteMessage">Are you sure ? This action can be undone...</p>
+
+            <form id="deleteProjectForm">
+                <div class="formButtons">
+                    <button id="acceptProjectDelete" value="accept" type="submit" formmethod="dialog" >Accept</button>
+                    <button autofocus id="closeProjectDeleteDialog" value="close" type="button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+</body>
+</html>
