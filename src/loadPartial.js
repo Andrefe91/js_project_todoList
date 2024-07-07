@@ -1,7 +1,7 @@
 export default async function loadPartial(partialName) {
     const newDiv = document.createElement('div');
     try {
-        const response = await fetch(`/src/${partialName}.html`);
+        const response = await fetch(`/${partialName}.html`);
         if (!response.ok) {
             throw new Error('Network response was not ok.');
         }
