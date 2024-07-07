@@ -3,7 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-  mode: 'development',
+  mode: 'production',
   devtool: 'inline-source-map',
   entry: './src/index.js',
   output: {
