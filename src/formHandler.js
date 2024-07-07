@@ -48,4 +48,26 @@ function getParamsValues(parameters) { //Allows getting n number of parameters f
 
 }
 
-export {addEventsToDialog}
+function addDeleteConfirmation() {
+    return new Promise((resolve, reject) => {
+        // Query Selectors
+        const dialog = document.getElementById("deleteDialog");
+        const closeButton = document.getElementById("closeDeleteDialog");
+        const form = document.getElementById("deleteForm");
+
+        dialog.showModal();
+
+        //Assign click event listeners
+        closeButton.addEventListener('click', () => {
+            dialog.close();
+        });
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            dialog.close();
+            resolve( true );
+        });
+    })
+}
+
+export {addEventsToDialog, addDeleteConfirmation}

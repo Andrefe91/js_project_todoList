@@ -4,6 +4,7 @@ import loadPartial from './loadPartial.js';
 import Todo from './todo.js';
 import Project from './lists.js';
 import unserializeUser from './unserialiseUser.js';
+import { addDeleteConfirmation  } from './formHandler.js';
 
 function controller(formId, params) {
     // Validate the form data and execute update actions
@@ -165,6 +166,7 @@ function updateTodoField() {
 }
 
 async function updateTodoList() {
+
     let user = returnUser(); // Create the User object
 
     let selectedProjectId = document.querySelector(".project.selected").getAttribute("projectid"); // Get the project Id
@@ -178,7 +180,6 @@ async function updateTodoList() {
     let todoList = project.getTodos();
 
     // Iterate over each to-do in the project and load its information into the DOM
-
         // Load the partial
     const blueprintDiv = await loadPartial('todoPartial');
 
@@ -224,6 +225,14 @@ async function updateTodoList() {
                 toggleDone(selectedTodoKey, selectedProjectId); //Change State of the To-Do on User File
                 document.querySelectorAll(".to-do")[selectedTodoKey].classList.toggle("done"); // Update Class in Dom for project
             });
+                //To Delete the To-Do
+            deleteTodoButton.addEventListener('click', async (event) => {
+                let todoKey = event.target.getAttribute("todokey");
+                let projectId = document.querySelector(".project.selected").getAttribute("projectid");
+                let returned = await addDeleteConfirmation();
+                console.log(returned);
+            });
+
 
             //Secundary assignments
             todoDiv.firstChild.classList.add(`${todoInformation["todoImportance"]}`);
@@ -240,6 +249,10 @@ function returnUser() {
     let userString = loadFromDisk('user'); // Read from disk
     let user = unserializeUser(userString); // Create the User object
     return user;
+}
+
+function deleteToDo() {
+
 }
 
 function toggleDone(todoKey, projectId) {
