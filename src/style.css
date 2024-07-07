@@ -107,6 +107,10 @@ form {
     text-decoration: underline;
 }
 
+.margin-right-s {
+    margin-right: 1em;
+}
+
 /* Locals */
 
 .container {
@@ -173,8 +177,6 @@ section {
     color: inherit;
     background: none;
     border-radius: .25rem;
-    text-align: center;
-    vertical-align: center;
     box-sizing: border-box;
     cursor: pointer;
     height: 2em;
@@ -203,7 +205,7 @@ section {
     height: 1em;
 }
 
-.project svg, .project p {
+.project div {
     pointer-events: none;
 }
 

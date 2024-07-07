@@ -5,8 +5,11 @@ export default function validate(formId, params) {
     let required = {
         "userForm" : ["userName"],
         "projectForm" : ["projectName"],
-        "todoForm" : ["todoTitle","todoDueDate", "todoImportance"]
+        "todoForm" : ["todoTitle","todoDueDate", "todoImportance"],
+        "deleteToDo" : ["todoKey", "projectId"],
+        "deleteProjectForm" : ["projectDeleteId"],
     };
+
     let keysRequired = required[formId];
     let keysParams = Object.keys(params);
 

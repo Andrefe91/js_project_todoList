@@ -25,6 +25,6 @@ date.innerHTML = format(Date(), "EEEE - MMMM d, yyyy"); // Part of the UI
 addEventsToDialog("userDialog", "editUserButton", "closeUserDialog", "userForm", ["userName"]);
 addEventsToDialog("projectDialog", "addProjectButton", "closeProjectDialog", "projectForm", ["projectName"]);
 addEventsToDialog("todoDialog", "addTodoButton", "closeTodoDialog", "todoForm", ["projectId", "todoTitle", "todoDueDate", "todoImportance", "todoDescription"]);
-
+addEventsToDialog("deleteDialogProject", "deleteProjectButton", "closeProjectDeleteDialog", "deleteProjectForm", ["projectDeleteId"]);
 
 

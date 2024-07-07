@@ -59,10 +59,17 @@
                 </div>
 
                 <div class="to-dos">
-                    <button id="addTodoButton" class="add">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus-box-multiple</title><path d="M19,11H15V15H13V11H9V9H13V5H15V9H19M20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M4,6H2V20A2,2 0 0,0 4,22H18V20H4V6Z" /></svg>
-                        <p>Add To-Do</p>
-                    </button>
+                    <div class="flex-centerVer">
+                        <button id="addTodoButton" class="add margin-right-s">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus-box-multiple</title><path d="M19,11H15V15H13V11H9V9H13V5H15V9H19M20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M4,6H2V20A2,2 0 0,0 4,22H18V20H4V6Z" /></svg>
+                            <p>Add To-Do</p>
+                        </button>
+
+                        <button class="add" id="deleteProjectButton">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete</title><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg>
+                            <p>Delete Project</p>
+                        </button>
+                    </div>
 
                     <div class="list" id="todoList">
 
@@ -146,6 +153,23 @@
                 <div class="formButtons">
                     <button id="acceptDelete" value="accept" type="submit" formmethod="dialog" >Accept</button>
                     <button autofocus id="closeDeleteDialog" value="close" type="button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="deleteDialogProject">
+        <div class="dialogContainer">
+            <input type="hidden" name="projectId" id="projectDeleteId" value="0">
+
+            <p id="dialogTitle" class="underline">Delete Confirmation</p>
+
+            <p id="deleteMessage">Are you sure ? This action can be undone...</p>
+
+            <form id="deleteProjectForm">
+                <div class="formButtons">
+                    <button id="acceptProjectDelete" value="accept" type="submit" formmethod="dialog" >Accept</button>
+                    <button autofocus id="closeProjectDeleteDialog" value="close" type="button">Cancel</button>
                 </div>
             </form>
         </div>

@@ -21,10 +21,10 @@ function updateUserAndDom(formId) {
 
     // Update the User object
     updateUserObject(formId, user);
-    updateUserDom(formId, user);
     // Update the user json in local storage
     saveToDisk("user", user);
 
+    updateUserDom(formId, user);
     // Delete from the local storage the form information to avoid repetition
     deleteFromDisk(formId);
 }
@@ -40,6 +40,12 @@ function updateUserObject(formId, user) {
         case "todoForm":
             addTodoInUser(user);
             break;
+        case "deleteToDo" :
+            deleteToDo(user)
+            break;
+        case "deleteProjectForm" :
+            deleteProjectInUser(user)
+            break;
     }
 }
 
@@ -50,7 +56,6 @@ async function updateUserDom(formId, user){
             break;
         case "projectForm":
             await updateProjectInfoInDom(user);
-
             // Select the recently created project
             document.querySelector(".projects_container").lastElementChild.classList.add("selected");
             updateTodoField();
@@ -58,6 +63,14 @@ async function updateUserDom(formId, user){
         case "todoForm":
             updateTodoField();
             break;
+        case "deleteToDo":
+            updateTodoField();
+            break;
+        case "deleteProjectForm":
+            await updateProjectInfoInDom(user);
+            // Select the recently created project
+            document.querySelector(".projects_container").lastElementChild.classList.add("selected");
+            updateTodoField();
     }
 }
 
@@ -229,10 +242,11 @@ async function updateTodoList() {
             deleteTodoButton.addEventListener('click', async (event) => {
                 let todoKey = event.target.getAttribute("todokey");
                 let projectId = document.querySelector(".project.selected").getAttribute("projectid");
-                let returned = await addDeleteConfirmation();
-                console.log(returned);
-            });
 
+                if (await addDeleteConfirmation()) {
+                    controller("deleteToDo", {"todoKey": todoKey, "projectId": projectId});
+                }
+            });
 
             //Secundary assignments
             todoDiv.firstChild.classList.add(`${todoInformation["todoImportance"]}`);
@@ -245,14 +259,30 @@ async function updateTodoList() {
     }
 }
 
+function deleteProjectInUser(user) {
+    // Assignments
+    let projectId = loadFromDisk('deleteProjectForm')["projectDeleteId"];
+
+    user.deleteProject(projectId);
+
+    callChange("Project Deleted");
+}
+
 function returnUser() {
     let userString = loadFromDisk('user'); // Read from disk
     let user = unserializeUser(userString); // Create the User object
     return user;
 }
 
-function deleteToDo() {
+function deleteToDo(user) {
+    // Assignments
+    let todoInformation = loadFromDisk('deleteToDo');
+    let project = user.getProjects()[todoInformation["projectId"]]
 
+    // Remove the To-Do Object from the project
+    project.removeTodo(todoInformation["todoKey"]);
+
+    callChange("Todo Deleted from Project");
 }
 
 function toggleDone(todoKey, projectId) {
@@ -282,8 +312,12 @@ function selectProyect(event) {
     // Get the project id from the button and assign it to the form
     let projectIdValue = selectedProyect.getAttribute("projectid");
     let formProjectId = document.getElementsByName("projectId")[0];
-
     formProjectId.setAttribute("value", projectIdValue);
+
+    // Set the ProjectId to the Delete Project Form
+    let projectDeleteId = document.getElementById("projectDeleteId");
+    projectDeleteId.setAttribute("value", projectIdValue);
+
     updateTodoField()
 }
 
