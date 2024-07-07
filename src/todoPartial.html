@@ -1,6 +1,34 @@
 <div class="to-do" todoPosition = "">
-    <p id="todoTitleText"></p>
-    <p id="todoDueDateText"></p>
-    <p id="todoImportanceText"></p>
-    <p id="todoDescriptionText"></p>
+    <div class="importanceColor"></div>
+
+    <div class="todoButtons">
+        <button class="doneTodoButton" id="doneTodoButton">🗸</button>
+        <button class="deleteTodoButton" id="deleteTodoButton">X</button>
+    </div>
+
+    <div class="todoContent">
+        <div class="todoResume">
+            <div class="field flex-centerVer">
+                <p class="fieldName">Title: </p>
+                <p id="todoTitleText"></p>
+            </div>
+
+            <div class="field flex-centerVer">
+                <p class="fieldName">Due Date:</p>
+                <p id="todoDueDateText"></p>
+            </div>
+
+            <div class="field flex-centerVer">
+                <p class="fieldName">Importance:</p>
+                <p id="todoImportanceText"></p>
+            </div>
+        </div>
+
+        <div class="field flex-centerVer">
+            <p class="fieldName">Description:</p>
+            <p id="todoDescriptionText"></p>
+        </div>
+    </div>
+
+
 </div>

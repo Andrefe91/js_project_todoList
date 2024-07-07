@@ -205,7 +205,8 @@ async function updateTodoList() {
                 todoElement.textContent = todoInformation[property]; // Append the value of the property to the HTML element
             }
 
-            todoListDiv.appendChild(todoDiv);
+            todoDiv.firstChild.classList.add(`${todoInformation["todoImportance"]}`);
+            todoListDiv.appendChild(todoDiv.firstChild);
         } catch (error) {
             console.error('Error during load and process: ', error);
         }

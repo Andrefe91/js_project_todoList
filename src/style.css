@@ -50,11 +50,16 @@ body {
 button {
     display: flex;
     align-items: center;
+    height: 2em;
 }
 
 button svg {
     height: 1.5em;
     margin-right: 0.35em;
+}
+
+button p {
+    height: 1em;
 }
 
 a {
@@ -70,6 +75,10 @@ dialog::backdrop {
     backdrop-filter: blur(3px);
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
 
 
 /* Tools */
@@ -92,6 +101,10 @@ dialog::backdrop {
 
 .space-between {
     justify-content: space-between;
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 /* Locals */
@@ -160,6 +173,8 @@ section {
     color: inherit;
     background: none;
     border-radius: .25rem;
+    text-align: center;
+    vertical-align: center;
     box-sizing: border-box;
     cursor: pointer;
     height: 2em;
@@ -217,13 +232,131 @@ footer {
 }
 
 .to-dos {
+
     padding: 1em 0 1em 0;
 }
 
 .to-do {
-    border: 1px solid red;
+    display: flex;
+    border: 1px dashed var(--main-color-accent);
     border-radius: 0.5em;
-    background-color: #c1b9f1;
+    background-color: #f7f5ff;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    transition: all 0.12s ease-in;
+
+    &:hover {
+        border: 1px solid var(--main-color-accent);
+        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    }
+}
+
+.todoResume {
+    display: flex;
+    flex-wrap: row;
+}
+
+.todoButtons {
+    margin-left: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.todoButtons button {
+    background-color: inherit;
+    border: 1px solid rgba(128, 128, 128, 0.233);
+    border-radius: 0.3em;
+    flex: 1;
+    transition: all 0.2s ease-in;
+}
+
+.todoButtons > :first-child {
+    margin-bottom: 0.2em;
+
+    &:hover {
+        background-color: rgba(168, 226, 168, 0.767);
+        cursor: pointer;
+    }
+}
+
+.todoButtons > :nth-child(2) {
+    &:hover {
+        background-color: rgba(226, 168, 168, 0.767);
+        cursor: pointer;
+    }
+}
+
+.importanceColor {
+    width: 0.5em;
+    border-radius: 0.2em;
+}
+
+.High .importanceColor {
+    background-color: rgb(238, 59, 28);
+}
+
+.Medium .importanceColor {
+    background-color: rgb(238, 184, 6);
+}
+
+.Low .importanceColor {
+    background-color: rgb(173, 240, 65);
+}
+
+.field {
+    margin-right: 1em;
+}
+
+.fieldName {
+    font-size: 0.9em;
+    margin-right: 0.5em;
+    color: rgb(124, 124, 124);
+    font-style: italic;
+    white-space: nowrap;
+}
+
+
+.todoContent {
+    margin-left: 0.5em;
+}
+
+dialog {
+    border: 2px solid var(--main-color-accent);
+    border-radius: 1em;
+}
+
+.dialogContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formButtons {
+    display: flex;
+    height: 2em;
+    margin-top: 0.5em;
+    justify-content: space-between;
+}
+.formButtons button {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--main-color-accent);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: baseline;
+    user-select: none;
+
+    margin-right: 0.2em;
+
+    &:hover {
+        background-color: var(--main-color-complement-darker);
+    }
 }
 
 /* Media Queries */
@@ -233,7 +366,12 @@ footer {
         margin: 40px 100px 40px 100px;
     }
 
+    .todoResume {
+        flex-direction: column;
+    }
+
 }
+
 
 @media (width < 720px) { /* Tablet Size */
 

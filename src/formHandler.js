@@ -27,7 +27,6 @@ function addEventsToDialog(dialogId, openButtonId, closeButtonId, formId, parame
         dialog.close();
 
         params = getParamsValues(parameters);
-        console.log(params);
         if (parameters.length != 0) {
             controller(formId, params); //In a MVC, this is sending information to the controller
         }

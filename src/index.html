@@ -73,55 +73,67 @@
     </div>
 
     <dialog id="userDialog">
-        <p>Edit User</p>
+        <div class="dialogContainer">
+            <p id="dialogTitle" class="underline">Edit User</p>
 
-        <form id="userForm">
-            <label for="userName">User Name:</label>
-            <input type="text" name="userName" id="userName">
+            <form id="userForm" >
+                <label for="userName">User Name:</label>
+                <input type="text" name="userName" id="userName">
 
-            <button autofocus id="closeUserDialog" value="close" type="button">Close</button>
-            <button id="acceptUserForm" value="accept" type="submit" formmethod="dialog" >Accept</button>
-        </form>
+                <div class="formButtons">
+                    <button id="acceptUserForm" value="accept" type="submit" formmethod="dialog" >Accept</button>
+                    <button autofocus id="closeUserDialog" value="close" type="button">Close</button>
+                </div>
+            </form>
+        </div>
     </dialog>
 
 
     <dialog id="projectDialog">
-        <p>New Project</p>
+        <div class="dialogContainer">
+            <p id="dialogTitle" class="underline">New Project</p>
 
-        <form id="projectForm">
-            <label for="projectName">Project Name:</label>
-            <input type="text" name="projectName" id="projectName">
+            <form id="projectForm">
+                <label for="projectName">Project Name:</label>
+                <input type="text" name="projectName" id="projectName">
 
-            <button autofocus id="closeProjectDialog" value="close" type="button">Close</button>
-            <button id="acceptProjectForm" value="accept" type="submit" formmethod="dialog" >Accept</button>
-        </form>
+                <div class="formButtons">
+                    <button id="acceptProjectForm" value="accept" type="submit" formmethod="dialog" >Accept</button>
+                    <button autofocus id="closeProjectDialog" value="close" type="button">Close</button>
+                </div>
+            </form>
+        </div>
     </dialog>
 
     <dialog id="todoDialog">
-        <p>New To-do</p>
+        <div class="dialogContainer">
+            <p id="dialogTitle" class="underline">New To-do</p>
 
-        <form id="todoForm">
-            <input type="hidden" name="projectId" id="projectId" value="0">
+            <form id="todoForm">
+                <input type="hidden" name="projectId" id="projectId" value="0">
 
-            <label for="todoTitle">Title:</label>
-            <input type="text" name="todoTitle" id="todoTitle">
+                <label for="todoTitle">Title:</label>
+                <input type="text" name="todoTitle" id="todoTitle">
 
-            <label for="todoDueDate">Due Date:</label>
-            <input type="date" name="todoDueDate" id="todoDueDate">
+                <label for="todoDueDate">Due Date:</label>
+                <input type="date" name="todoDueDate" id="todoDueDate">
 
-            <label for="todoImportance">Priority:</label>
-            <select name="todoImportance" id="todoImportance">
-                <option value="High">High</option>
-                <option value="Medium" selected="selected">Medium</option>
-                <option value="Low">Low</option>
-            </select>
+                <label for="todoImportance">Priority:</label>
+                <select name="todoImportance" id="todoImportance">
+                    <option value="High">High</option>
+                    <option value="Medium" selected="selected">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
 
-            <label for="todoDescription">Description: </label>
-            <input type="text" name="todoDescription" id="todoDescription">
+                <label for="todoDescription">Description: </label>
+                <textarea name="todoDescription" id="todoDescription"></textarea>
 
-            <button autofocus id="closeTodoDialog" value="close" type="button">Close</button>
-            <button id="acceptTodoForm" value="accept" type="submit" formmethod="dialog" >Accept</button>
-        </form>
+                <div class="formButtons">
+                    <button id="acceptTodoForm" value="accept" type="submit" formmethod="dialog" >Accept</button>
+                    <button autofocus id="closeTodoDialog" value="close" type="button">Close</button>
+                </div>
+            </form>
+        </div>
     </dialog>
 </body>
 </html>
