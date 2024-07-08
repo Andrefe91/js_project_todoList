@@ -134,8 +134,10 @@ async function updateProjectInfoInDom(user) {
     const blueprintDiv = await loadPartial('projectPartial');
 
     // Iterate over each project in the user and load its partial into the DOM
-    for (let projectKey in user.projects) {
+    for (let key in Object.keys(user.projects)) {
         try {
+
+            let projectKey = Object.keys(user.projects)[key];
             // Create a new div to hold the project partial and its content
             const projectDiv = document.createElement('div');
             projectDiv.innerHTML = blueprintDiv.innerHTML
@@ -277,8 +279,7 @@ function returnUser() {
 function deleteToDo(user) {
     // Assignments
     let todoInformation = loadFromDisk('deleteToDo');
-    let project = user.getProjects()[todoInformation["projectId"]]
-
+    let project = user.projects[todoInformation["projectId"]];
     // Remove the To-Do Object from the project
     project.removeTodo(todoInformation["todoKey"]);
 

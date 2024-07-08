@@ -3,6 +3,7 @@ export default class User {
     constructor(name) {
         this._name = name;
         this.projects = {};
+        this.projectsNumber = 0;
     }
 
     // Getters
@@ -17,7 +18,8 @@ export default class User {
 
     // Methods
     addProject(project) {
-        this.projects[Object.keys(this.projects).length] = project;
+        this.projects[this.projectsNumber] = project;
+        this.projectsNumber++;
     }
 
     deleteProject(projectID) {

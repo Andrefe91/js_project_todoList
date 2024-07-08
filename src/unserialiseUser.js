@@ -25,7 +25,10 @@ export default function unserializeUser(object) {
             project.addTodo(todo);
         });
 
-        user.addProject(project);
+        user.projects[key] = project;
     }
+
+    user.projectsNumber = object["projectsNumber"];
     return user;
+
 }
